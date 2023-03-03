@@ -1,0 +1,45 @@
+
+workspace "CLGL"
+    configurations { "Debug", "Release", "NoWay"}
+    platforms {"Win32", "Win64", "GLFW"}
+
+filter {"platforms:Win32"}
+   system "Windows"
+   architecture "x86"
+
+filter {"platforms:win64"}
+   system "Windows"
+   architecture "x86_64"
+
+filter {"platforms:GLFW"}
+   system "Windows"
+   architecture "x86_64"
+   defines
+   {
+      "CG_PLATFORM_GLFW"
+   }
+
+filter {"configurations:Release"}
+   optimize "On"
+   defines
+   {
+      "CG_NO_DEBUG"
+   }
+
+OutputDirname = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+EngineOutputDir = "%{wks.location}/Bin/" .. OutputDirname
+EngineIntDir = "%{wks.location}/BinInt/"
+
+includedirs {"%{wks.location}/Engine/Source/Core/"}
+
+group "Engine"
+   include "Engine/Source/CLGL.cproject"
+group ""
+
+group "Vendor"
+   include "Engine/Vendor/GLFW3.cproject"
+group ""
+
+group "Example"
+   include "Example/CoreTest/CoreTest.cproject"
+group ""

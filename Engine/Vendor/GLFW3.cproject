@@ -1,0 +1,47 @@
+project "GLFW3"
+    kind "StaticLib"
+    language "C"
+    staticruntime "off"
+
+    targetdir (EngineOutputDir)
+    objdir (EngineIntDir)
+
+    files 
+    {
+        "glfw/include/GLFW/glfw3.h",
+        "glfw/include/GLFW/glfw3native.h",
+        "glfw/src/context.c",
+        "glfw/src/init.c",
+        "glfw/src/input.c",
+        "glfw/src/monitor.c",
+        "glfw/src/vulkan.c",
+        "glfw/src/window.c",
+        "glfw/src/platform.c",
+        "glfw/src/null_*.c"
+    }
+
+    filter "system:windows"
+        systemversion "latest"
+        staticruntime "On"
+
+        files
+        {
+            "glfw/src/wgl_context.c",
+            "glfw/src/egl_context.c",
+            "glfw/src/osmesa_context.c",
+            "glfw/src/win32_*.c"
+        }
+
+        defines 
+        { 
+            "_GLFW_WIN32",
+            "_CRT_SECURE_NO_WARNINGS"
+        }
+
+    filter "configurations:Debug"
+        runtime "Debug"
+        symbols "on"
+
+    filter "configurations:Release"
+        runtime "Release"
+        optimize "on"

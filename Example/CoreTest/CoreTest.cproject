@@ -1,0 +1,22 @@
+project "CoreTest"
+    kind "ConsoleApp"
+    language "C++"
+
+    targetdir (EngineOutputDir)
+    objdir (EngineIntDir)
+
+    includedirs
+    {
+        "%{wks.location}/Engine/Source/Core/"
+    }
+
+    files 
+    { 
+      "./**.h",
+      "./**.cpp"
+    }
+
+    links
+    {
+      EngineOutputDir .. "/CLGL.lib"
+    }

@@ -1,0 +1,3 @@
+[submodule "CLGL/Vendor/glfw"]
+	path = CLGL/Vendor/glfw
+	url = git@github.com:chendebi/glfw.git

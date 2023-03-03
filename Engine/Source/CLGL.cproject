@@ -1,0 +1,17 @@
+project "CLGL"
+    kind "StaticLib"
+    language "C++"
+    
+    targetdir (EngineOutputDir)
+    objdir (EngineIntDir)
+
+    files
+    {
+        "./**.h",
+        "./**.cpp"
+    }
+
+    includedirs
+    {
+        "%{wks.location}/Engine/Source/Core/"
+    }
