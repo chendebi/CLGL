@@ -1,26 +1,29 @@
-project "GLFW3"
+include "/Engine/Build/EngineBuildConfiguration.cpdata"
+
+project "GLFW"
     kind "StaticLib"
     language "C"
     staticruntime "off"
 
-    targetdir (EngineOutputDir)
-    objdir (EngineIntDir)
+    targetdir (engine_target_dir)
+    objdir (engine_int_dir)
 
-    files 
-    {
-        "glfw/include/GLFW/glfw3.h",
-        "glfw/include/GLFW/glfw3native.h",
-        "glfw/src/context.c",
-        "glfw/src/init.c",
-        "glfw/src/input.c",
-        "glfw/src/monitor.c",
-        "glfw/src/vulkan.c",
-        "glfw/src/window.c",
-        "glfw/src/platform.c",
-        "glfw/src/null_*.c"
-    }
+    filter "platforms:GLFW"
+        files 
+        {
+            "glfw/include/GLFW/glfw3.h",
+            "glfw/include/GLFW/glfw3native.h",
+            "glfw/src/context.c",
+            "glfw/src/init.c",
+            "glfw/src/input.c",
+            "glfw/src/monitor.c",
+            "glfw/src/vulkan.c",
+            "glfw/src/window.c",
+            "glfw/src/platform.c",
+            "glfw/src/null_*.c"
+        }
 
-    filter "system:windows"
+    filter {"system:windows", "platforms:GLFW"}
         systemversion "latest"
         staticruntime "On"
 

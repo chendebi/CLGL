@@ -1,0 +1,19 @@
+
+-- 最终的输出路径
+engine_target_dir = "%{wks.location}/Bin/%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+
+-- 中间文件输出
+engine_int_dir = "%{wks.location}/BinInt/"
+
+engine_source_path = "%{wks.location}/Engine/Source"
+
+engine_vendor_path = "%{wks.location}/Engine/Vendor"
+
+dependences_include_dirs = {}
+
+dependences_include_dirs["GLFW"] = engine_vendor_path .. "/glfw/include"
+dependences_include_dirs["Glad"] = engine_vendor_path .. "/glad/include"
+
+function LinkStaticFile(FileName)
+    return engine_target_dir .. FileName .. ".lib"
+end

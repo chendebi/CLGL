@@ -1,11 +1,8 @@
+include "Engine/Build/EngineBuildConfiguration.cpdata"
 
 workspace "CLGL"
-    configurations { "Debug", "Release", "NoWay"}
-    platforms {"Win32", "Win64", "GLFW"}
-
-filter {"platforms:Win32"}
-   system "Windows"
-   architecture "x86"
+    configurations { "Debug", "Release"}
+    platforms {"Win64", "GLFW"}
 
 filter {"platforms:win64"}
    system "Windows"
@@ -25,12 +22,6 @@ filter {"configurations:Release"}
    {
       "CG_NO_DEBUG"
    }
-
-OutputDirname = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
-EngineOutputDir = "%{wks.location}/Bin/" .. OutputDirname
-EngineIntDir = "%{wks.location}/BinInt/"
-
-includedirs {"%{wks.location}/Engine/Source/Core/"}
 
 group "Engine"
    include "Engine/Source/CLGL.cproject"

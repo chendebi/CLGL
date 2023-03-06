@@ -1,17 +1,34 @@
+include "Engine/Build/EngineBuildConfiguration.cpdata"
+
 project "CLGL"
     kind "StaticLib"
     language "C++"
     
-    targetdir (EngineOutputDir)
-    objdir (EngineIntDir)
+    targetdir (engine_target_dir)
+    objdir (engine_int_dir)
 
     files
     {
         "./**.h",
-        "./**.cpp"
+        "./**.cpp",
+        engine_vendor_path .. "/glad/src/*.c"
     }
 
     includedirs
     {
-        "%{wks.location}/Engine/Source/Core/"
+        engine_source_path,
+        dependences_include_dirs["Glad"]
     }
+
+    filter "platforms:not GLFW"
+        removefiles {"**/GLFW/**.h", "**/GLFW/**.cpp"}
+
+    filter "platforms:GLFW"
+        includedirs
+        {
+            dependences_include_dirs["GLFW"]
+        }
+        links
+        {
+            LinkStaticFile("GLFW")
+        }

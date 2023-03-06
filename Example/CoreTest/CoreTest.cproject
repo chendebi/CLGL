@@ -1,14 +1,11 @@
+include "/Engine/Build/EngineBuildConfiguration.cpdata"
+
 project "CoreTest"
     kind "ConsoleApp"
     language "C++"
 
-    targetdir (EngineOutputDir)
-    objdir (EngineIntDir)
-
-    includedirs
-    {
-        "%{wks.location}/Engine/Source/Core/"
-    }
+    targetdir (engine_target_dir)
+    objdir (engine_int_dir)
 
     files 
     { 
@@ -18,5 +15,10 @@ project "CoreTest"
 
     links
     {
-      EngineOutputDir .. "/CLGL.lib"
+      engine_target_dir .. "/CLGL.lib"
+    }
+
+    includedirs
+    {
+      engine_source_path
     }

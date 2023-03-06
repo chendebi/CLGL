@@ -1,4 +1,4 @@
-﻿#include "Types/CArray.h"
+﻿#include "Core.h"
 #include "Types/CString.h"
 #include "Logging/Logging.h"
 
@@ -28,7 +28,7 @@ int main(int argc, char** argv)
 
     //check(0)
 
-    checkmsg(false, "check failed!")
+    //checkmsg(false, "check failed!")
     
 	LogError(LogCoreTest,"测试已经结束")
 

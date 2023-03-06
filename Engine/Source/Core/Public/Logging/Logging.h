@@ -1,7 +1,7 @@
 ﻿#ifndef LOGGING_H
 #define LOGGING_H
 
-#include "Types/CString.h"
+#include "Core/Public/Types/CString.h"
 
 struct CLogBaseCategory
 {
