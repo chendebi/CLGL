@@ -2,35 +2,29 @@ include "Engine/Build/EngineBuildConfiguration.cpdata"
 
 workspace "CLGL"
     configurations { "Debug", "Release"}
-    platforms {"Win64", "GLFW"}
+    architecture "x86_64"
+    platforms {"Win64", "GLFW", "MacOS"}
 
-filter {"platforms:win64"}
-   system "Windows"
-   architecture "x86_64"
-
-filter {"platforms:GLFW"}
-   system "Windows"
-   architecture "x86_64"
-   defines
-   {
+    defines
+    {
       "CG_PLATFORM_GLFW"
-   }
+    }
 
-filter {"configurations:Release"}
-   optimize "On"
-   defines
-   {
-      "CG_NO_DEBUG"
-   }
+    filter {"configurations:Release"}
+      optimize "On"
+      defines
+      {
+         "CG_NO_DEBUG"
+      }
 
-group "Engine"
-   include "Engine/Source/CLGL.cproject"
-group ""
+    group "Engine"
+       include "Engine/Source/CLGL.cproject"
+    group ""
+ 
+    group "Vendor"
+       include "Engine/Vendor/GLFW3.cproject"
+    group ""
 
-group "Vendor"
-   include "Engine/Vendor/GLFW3.cproject"
-group ""
-
-group "Example"
-   include "Example/CoreTest/CoreTest.cproject"
-group ""
+    group "Example"
+       include "Example/CoreTest/CoreTest.cproject"
+    group ""

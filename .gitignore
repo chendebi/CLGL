@@ -38,3 +38,6 @@ BinInt
 *.user
 *.vcxproj
 *.filters
+.DS_Store
+*.xcworkspace
+*.xcodeproj

@@ -17,18 +17,11 @@ project "CLGL"
     includedirs
     {
         engine_source_path,
-        dependences_include_dirs["Glad"]
+        dependences_include_dirs["Glad"],
+        dependences_include_dirs["GLFW"]
     }
 
-    filter "platforms:not GLFW"
-        removefiles {"**/GLFW/**.h", "**/GLFW/**.cpp"}
-
-    filter "platforms:GLFW"
-        includedirs
-        {
-            dependences_include_dirs["GLFW"]
-        }
-        links
-        {
-            LinkStaticFile("GLFW")
-        }
+    links
+    {
+        LinkStaticFile("GLFW")
+    }

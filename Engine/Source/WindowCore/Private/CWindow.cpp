@@ -1,4 +1,4 @@
-﻿#include "WindowCore/Public/CWindow.h"
+#include "WindowCore/Public/CWindow.h"
 
 CLGL::CWindow::CWindow(CWindow* Parent, const CString& Title, const CIntSize& DefaultSize)
 {

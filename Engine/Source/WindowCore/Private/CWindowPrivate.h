@@ -1,4 +1,4 @@
-﻿#ifndef CWINDOWPRIVATE_H
+#ifndef CWINDOWPRIVATE_H
 #define CWINDOWPRIVATE_H
 
 

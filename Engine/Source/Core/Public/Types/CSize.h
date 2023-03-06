@@ -1,4 +1,4 @@
-﻿#ifndef CSIZE_H
+#ifndef CSIZE_H
 #define CSIZE_H
 
 namespace CLGL
@@ -6,8 +6,8 @@ namespace CLGL
     template<typename T>
     struct CSize
     {
-        union {T X; T Y;};
-        union {T Width; T Height;};
+        union {T X; T Width;};
+        union {T Y; T Height;};
 
         CSize() : X(0), Y(0) {}
 

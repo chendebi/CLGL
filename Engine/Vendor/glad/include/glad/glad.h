@@ -86,7 +86,11 @@ GLAPI int gladLoadGL(void);
 
 GLAPI int gladLoadGLLoader(GLADloadproc);
 
+#ifdef __APPLE__
+#include "KHR/khrplatform.h"
+#else
 #include <KHR/khrplatform.h>
+#endif
 typedef unsigned int GLenum;
 typedef unsigned char GLboolean;
 typedef unsigned int GLbitfield;
