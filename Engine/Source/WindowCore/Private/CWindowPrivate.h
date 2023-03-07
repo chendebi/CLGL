@@ -17,7 +17,7 @@ namespace CLGL
 
         virtual void SetWindowSize(const CIntSize& NewSize) = 0;
 
-        virtual void MakeOpenGLContext() = 0;
+        virtual void MakeCurrentContext() = 0;
     };
     
 }

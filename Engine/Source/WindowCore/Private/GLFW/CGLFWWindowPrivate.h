@@ -1,14 +1,16 @@
 ﻿#ifndef CGLFWWINDOWPRIVATE_H
 #define CGLFWWINDOWPRIVATE_H
 
-#include "CWindowPrivate.h"
+#include "WindowCore/Private/CWindowPrivate.h"
+
+struct GLFWwindow;
 
 namespace CLGL
 {
     class CGLFWWindowPrivate : public CWindowPrivate
     {
     public:
-        explicit CGLFWWindowPrivate(CWindowPrivate* Parent = nullptr);
+        explicit CGLFWWindowPrivate();
 
         bool CreateWindow(CWindowPrivate* Parent) override;
 
@@ -18,7 +20,10 @@ namespace CLGL
 
         void SetWindowSize(const CIntSize& NewSize) override;
 
-        void MakeOpenGLContext() override;
+        void MakeCurrentContext() override;
+
+    private:
+        GLFWwindow* WindowHandle = nullptr;
     };
 }
 

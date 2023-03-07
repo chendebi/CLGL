@@ -1,6 +1,4 @@
-﻿#include "Core.h"
-#include "Types/CString.h"
-#include "Logging/Logging.h"
+﻿#include "Core/Core.h"
 
 using namespace CLGL;
 

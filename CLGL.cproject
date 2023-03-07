@@ -3,11 +3,13 @@ include "Engine/Build/EngineBuildConfiguration.cpdata"
 workspace "CLGL"
     configurations { "Debug", "Release"}
     architecture "x86_64"
-    platforms {"Win64", "GLFW", "MacOS"}
+    platforms {"Win64", "MacOS"}
 
     defines
     {
-      "CG_PLATFORM_GLFW"
+      "CG_PLATFORM_GLFW",
+      "CG_GLAD_VERSION_MAJOR=4",
+      "CG_GLAD_VERSION_MINOR=6"
     }
 
     filter {"configurations:Release"}

@@ -26,6 +26,11 @@ namespace CLGL
                 P->SetWindowSize(NewSize);
             }
         }
+
+        void MakeCurrentContext() const
+        {
+            P->MakeCurrentContext();
+        }
         
     private:
         CWindowPrivate* P = nullptr;
