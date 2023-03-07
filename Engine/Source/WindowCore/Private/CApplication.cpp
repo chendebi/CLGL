@@ -1,18 +1,20 @@
-﻿#include "WindowCore/Public/CApplication.h"
+#include "WindowCore/Public/CApplication.h"
 #include "GLFW/CGLFWApplicationPrivate.h"
 
 namespace CLGL
 {
 
-    CApplication* CApplication::GlobalApp = nullptr;
+    CApplication* CApplication::AppInst = nullptr;
     
     CApplication::CApplication(int Argc, char** Argv)
         : ArgumentCount(Argc),
           CurrentContextWindow(nullptr)
     {
-        if (!GlobalApp)
+        if (!AppInst)
         {
+            AppInst = this;
             P = new CGLFWApplicationPrivate();
+            CApplicationPrivate::AppPrivateInst = P;
             for (int i = 0; i < Argc; i++)
             {
                 Arguments.push_back(Argv[i]);
@@ -29,19 +31,26 @@ namespace CLGL
         CApplicationPrivate::AppPrivateInst = nullptr;
     }
 
+    CApplication* CApplication::Get()
+    {
+        return AppInst;
+    }
+
     void CApplication::LoadOpenGLFunctions() const
     {
         P->LoadOpenGLFunctions();
     }
 
-    void CApplication::AddContextWindow(CWindow* Window)
+    void CApplication::SetCurrentContextWindow(CWindow* Window)
     {
-        if (Window)
+        if (Window && Window)
         {
-            if (CurrentContextWindow)
-            {
-                
-            }
+            CurrentContextWindow = Window;
         }
+    }
+
+    void CApplication::AddWindow(CWindow *NewWindow)
+    {
+        Windows.push_back(NewWindow);
     }
 }

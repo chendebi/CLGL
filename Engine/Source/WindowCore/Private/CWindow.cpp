@@ -1,4 +1,5 @@
 #include "WindowCore/Public/CWindow.h"
+#include "CApplication.h"
 
 #ifdef CG_PLATFORM_GLFW
 #include "GLFW/CGLFWWindowPrivate.h"

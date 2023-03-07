@@ -1,4 +1,4 @@
-﻿#ifndef CAPPLICATION_H
+#ifndef CAPPLICATION_H
 #define CAPPLICATION_H
 
 #include "CWindow.h"
@@ -8,19 +8,26 @@ namespace CLGL
 {
     class CApplicationPrivate;
     
-    class final CApplication
+    class CApplication
     {
     public:
-
-        static CApplication* GlobalApp;
         
         explicit CApplication(int Argc, char** Argv);
 
         ~CApplication();
+        
+        static CApplication* Get();
 
         void LoadOpenGLFunctions() const;
 
-        void AddContextWindow(CWindow* Window);
+        void SetCurrentContextWindow(CWindow* Window);
+        
+    private:
+        friend class CWindow;
+        void AddWindow(CWindow* NewWindow);
+        
+    private:
+        static CApplication* AppInst;
         
     private:
         CApplicationPrivate* P = nullptr;
@@ -28,6 +35,8 @@ namespace CLGL
         CArray<CString> Arguments;
 
         CWindow* CurrentContextWindow;
+        
+        CArray<CWindow*> Windows;
     };
     
 }

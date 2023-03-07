@@ -1,4 +1,4 @@
-﻿#ifndef CAPPLICATIONPRIVATE_H
+#ifndef CAPPLICATIONPRIVATE_H
 #define CAPPLICATIONPRIVATE_H
 
 namespace CLGL
@@ -8,6 +8,8 @@ namespace CLGL
     {
     public:
         static CApplicationPrivate* AppPrivateInst;
+        
+        virtual ~CApplicationPrivate() {}
 
         virtual void InitApplication() = 0;
         

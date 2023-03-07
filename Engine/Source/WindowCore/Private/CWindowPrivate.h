@@ -9,6 +9,8 @@ namespace CLGL
     class CWindowPrivate
     {
     public:
+        virtual ~CWindowPrivate() {}
+        
         virtual bool CreateWindow(CWindowPrivate* Parent = nullptr) = 0;
 
         virtual void DestroyWindow() = 0;

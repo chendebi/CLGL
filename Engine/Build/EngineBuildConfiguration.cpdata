@@ -15,5 +15,5 @@ dependences_include_dirs["GLFW"] = engine_vendor_path .. "/glfw/include"
 dependences_include_dirs["Glad"] = engine_vendor_path .. "/glad/include"
 
 function LinkStaticFile(FileName)
-    return engine_target_dir .. FileName .. ".lib"
+    return engine_target_dir .. "/" .. FileName .. ".lib"
 end

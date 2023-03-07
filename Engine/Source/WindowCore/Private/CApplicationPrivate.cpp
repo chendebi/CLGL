@@ -1,7 +1,8 @@
-﻿#include "CApplicationPrivate.h"
+#include "CApplicationPrivate.h"
+#include <stdio.h>
 
 namespace CLGL
 {
-    CApplicationPrivate* CApplicationPrivate::AppPrivateInst = nullptr;
+    CApplicationPrivate* CApplicationPrivate::AppPrivateInst = NULL;
     
 }

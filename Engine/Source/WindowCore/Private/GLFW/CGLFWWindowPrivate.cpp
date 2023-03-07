@@ -32,4 +32,3 @@ void CLGL::CGLFWWindowPrivate::MakeCurrentContext()
 {
     glfwMakeContextCurrent(WindowHandle);
 }
-
