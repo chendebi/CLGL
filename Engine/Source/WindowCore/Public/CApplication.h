@@ -20,11 +20,14 @@ namespace CLGL
 
         void LoadOpenGLFunctions() const;
 
-        void SetCurrentContextWindow(CWindow* Window);
+        int Exec();
         
     private:
         friend class CWindow;
+        
         void AddWindow(CWindow* NewWindow);
+
+        void SetCurrentContextWindow(CWindow* Window);
         
     private:
         static CApplication* AppInst;

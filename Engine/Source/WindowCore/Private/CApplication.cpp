@@ -20,7 +20,8 @@ namespace CLGL
                 Arguments.push_back(Argv[i]);
             }
             P->InitApplication();
-            P->SetOpenGLVersion(CG_GLAD_VERSION_MAJOR, CG_GLAD_VERSION_MINOR);
+            //P->SetOpenGLVersion(CG_GLAD_VERSION_MAJOR, CG_GLAD_VERSION_MINOR);
+            P->SetOpenGLVersion(3,3);
         }
     }
 
@@ -41,9 +42,15 @@ namespace CLGL
         P->LoadOpenGLFunctions();
     }
 
+    int CApplication::Exec()
+    {
+        P->PollEvents();
+        return 0;
+    }
+
     void CApplication::SetCurrentContextWindow(CWindow* Window)
     {
-        if (Window && Window)
+        if (Window)
         {
             CurrentContextWindow = Window;
         }

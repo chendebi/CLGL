@@ -25,19 +25,19 @@ struct CLogBaseCategory
 
 #define LogInfo(LogCategory, Msg, ...)\
     {\
-        CString OutMsg = "[" + LogCategory.Name + "] [Info] " + Msg + "\n";\
+        CLGL::CString OutMsg = "[" + LogCategory.Name + "] [Info] " + Msg + "\n";\
         fprintf(stdout, OutMsg.c_str(), __VA_ARGS__);\
     }
 
 #define LogWarning(LogCategory, Msg, ...)\
     {\
-        CString OutMsg = "[" + LogCategory.Name + "] [Warning] " + Msg + "\n";\
+        CLGL::CString OutMsg = "[" + LogCategory.Name + "] [Warning] " + Msg + "\n";\
         fprintf(stdout, OutMsg.c_str(), __VA_ARGS__);\
     }
 
 #define LogError(LogCategory, Msg, ...)\
     {\
-        CString OutMsg = "[" + LogCategory.Name + "] [Error] " + Msg + "\n";\
+        CLGL::CString OutMsg = "[" + LogCategory.Name + "] [Error] " + Msg + "\n";\
         fprintf(stderr, OutMsg.c_str(), __VA_ARGS__);\
     }
 

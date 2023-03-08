@@ -1,5 +1,5 @@
 #include "WindowCore/Public/CWindow.h"
-#include "CApplication.h"
+#include "WindowCore/Public/CApplication.h"
 
 #ifdef CG_PLATFORM_GLFW
 #include "GLFW/CGLFWWindowPrivate.h"
@@ -17,6 +17,7 @@ CLGL::CWindow::CWindow(CWindow* Parent, const CString& Title, const CIntSize& De
     P->CreateWindow(PP);
     SetWindowTitle(Title);
     SetWindowSize(DefaultSize);
+    CApplication::Get()->AddWindow(this);
 }
 
 CLGL::CWindow::~CWindow()
@@ -24,5 +25,11 @@ CLGL::CWindow::~CWindow()
     P->DestroyWindow();
     delete P;
     P = nullptr;
+}
+
+void CLGL::CWindow::MakeCurrentContext()
+{
+    P->MakeCurrentContext();
+    CApplication::Get()->SetCurrentContextWindow(this);
 }
 

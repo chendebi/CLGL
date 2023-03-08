@@ -16,6 +16,8 @@ namespace CLGL
         virtual void SetOpenGLVersion(int Major, int Minor) = 0;
 
         virtual void LoadOpenGLFunctions() = 0;
+
+        virtual void PollEvents() = 0;
     };
 }
 #endif

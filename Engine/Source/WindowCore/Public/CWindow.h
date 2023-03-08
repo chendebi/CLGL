@@ -27,10 +27,7 @@ namespace CLGL
             }
         }
 
-        void MakeCurrentContext() const
-        {
-            P->MakeCurrentContext();
-        }
+        void MakeCurrentContext();
         
     private:
         CWindowPrivate* P = nullptr;

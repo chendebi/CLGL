@@ -1,11 +1,13 @@
 include "/Engine/Build/EngineBuildConfiguration.cpdata"
 
 project "CoreTest"
-    kind "ConsoleApp"
+    kind "WindowedApp"
     language "C++"
 
     targetdir (engine_target_dir)
     objdir (engine_int_dir)
+
+    entrypoint "Main"
 
     files 
     { 
@@ -15,7 +17,8 @@ project "CoreTest"
 
     links
     {
-      engine_target_dir .. "/CLGL.lib"
+      engine_target_dir .. "/CLGL.lib",
+      "opengl32.lib"
     }
 
     includedirs

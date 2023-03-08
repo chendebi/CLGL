@@ -9,6 +9,7 @@ CLGL::CGLFWWindowPrivate::CGLFWWindowPrivate()
 bool CLGL::CGLFWWindowPrivate::CreateWindow(CWindowPrivate* Parent)
 {
     WindowHandle = glfwCreateWindow(600, 400, "Window", nullptr, nullptr);
+    checkmsg(WindowHandle, "Create Glfw Window failed! %d", glfwGetError(nullptr))
     return WindowHandle;
 }
 

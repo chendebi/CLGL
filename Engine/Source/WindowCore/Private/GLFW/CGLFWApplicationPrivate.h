@@ -14,6 +14,8 @@ namespace CLGL
         void SetOpenGLVersion(int Major, int Minor) override;
 
         void LoadOpenGLFunctions() override;
+
+        void PollEvents() override;
     };
 }
 
