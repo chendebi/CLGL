@@ -3,6 +3,8 @@
 
 #include "WindowCore/Private/CApplicationPrivate.h"
 
+struct GLFWwindow;
+
 namespace CLGL
 {
     class CGLFWApplicationPrivate : public CApplicationPrivate
@@ -16,6 +18,17 @@ namespace CLGL
         void LoadOpenGLFunctions() override;
 
         void PollEvents() override;
+
+        void ProcessMouseEvent(CMouseEventPrivate Event) override;
+        
+        CWindowPrivate* FindWindowByGLFWwindow(GLFWwindow* W);
+
+        CMap<CWindow*, CArray<CEvent>> GetEvents() override;
+
+        int GetQuitCode() override;
+
+    private:
+        CMap<CWindow*, CArray<CEvent>> FrameEvents;
     };
 }
 

@@ -6,11 +6,23 @@
 
 namespace CLGL
 {
+    class CWindow;
+}
+
+namespace CLGL
+{
     class CWindowPrivate
     {
     public:
-        virtual ~CWindowPrivate() {}
+        explicit CWindowPrivate(CWindow* W)
+        {
+            BelongWindow = W;
+        }
+
+        CWindow* Window() const { return BelongWindow; }
         
+        virtual ~CWindowPrivate() = default;
+
         virtual bool CreateWindow(CWindowPrivate* Parent = nullptr) = 0;
 
         virtual void DestroyWindow() = 0;
@@ -20,6 +32,9 @@ namespace CLGL
         virtual void SetWindowSize(const CIntSize& NewSize) = 0;
 
         virtual void MakeCurrentContext() = 0;
+
+    private:
+        CWindow* BelongWindow = nullptr;
     };
     
 }

@@ -7,14 +7,28 @@ project "CoreTest"
     targetdir (engine_target_dir)
     objdir (engine_int_dir)
 
-    entrypoint "Main"
+
+    entrypoint "mainCRTStartup"
 
     files 
     { 
       "./**.h",
       "./**.cpp"
     }
+--[[
+    links
+    {
+      engine_target_dir .. "/GLFW.lib",
+      "opengl32.lib"
+    }
 
+    includedirs
+    {
+      dependences_include_dirs["GLFW"],
+      dependences_include_dirs["GLAD"]
+    }
+--]]
+---[[
     links
     {
       engine_target_dir .. "/CLGL.lib",
@@ -25,3 +39,4 @@ project "CoreTest"
     {
       engine_source_path
     }
+--]]

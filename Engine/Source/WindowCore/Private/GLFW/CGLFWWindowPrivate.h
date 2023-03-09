@@ -10,7 +10,7 @@ namespace CLGL
     class CGLFWWindowPrivate : public CWindowPrivate
     {
     public:
-        explicit CGLFWWindowPrivate();
+        explicit CGLFWWindowPrivate(CWindow* W);
 
         bool CreateWindow(CWindowPrivate* Parent) override;
 
@@ -22,7 +22,10 @@ namespace CLGL
 
         void MakeCurrentContext() override;
 
+        GLFWwindow* GetWindowHandle() const { return WindowHandle; }
+        
     private:
+        friend class CGLFWApplicationPrivate;
         GLFWwindow* WindowHandle = nullptr;
     };
 }

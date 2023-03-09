@@ -1,15 +1,36 @@
 #include "CGLFWWindowPrivate.h"
-#include "GLFW/glfw3.h"
 
-CLGL::CGLFWWindowPrivate::CGLFWWindowPrivate()
+#include "CGLFWApplicationPrivate.h"
+#include "GLFW/glfw3.h"
+#include "WindowCore/Private/CApplicationPrivate.h"
+
+
+void MouseButtonCallback(GLFWwindow* Window, int Button, int Action, int Mode)
 {
-    
+    CLGL::CEvent::EventType Type;
+    switch (Action)
+    {
+    case 1: Type = CLGL::CEvent::MouseButtonRelease; break;
+    case 2: Type = CLGL::CEvent::MouseButtonPress; break;
+    default:
+            Type = CLGL::CEvent::None;
+        break;;
+    }
+    const auto AppInstP = dynamic_cast<CLGL::CGLFWApplicationPrivate*>(CLGL::CApplicationPrivate::AppPrivateInst);
+    AppInstP->ProcessMouseEvent(CLGL::CMouseEventPrivate(AppInstP->FindWindowByGLFWwindow(Window)->Window(),
+        static_cast<CLGL::MouseButton>(Button), Type));
+    LogInfo(LogSystem, "Mouse Event: %d, %d", Button, Action)
+}
+
+CLGL::CGLFWWindowPrivate::CGLFWWindowPrivate(CWindow* W)
+    : CWindowPrivate(W)
+{
 }
 
 bool CLGL::CGLFWWindowPrivate::CreateWindow(CWindowPrivate* Parent)
 {
-    WindowHandle = glfwCreateWindow(600, 400, "Window", nullptr, nullptr);
-    checkmsg(WindowHandle, "Create Glfw Window failed! %d", glfwGetError(nullptr))
+    WindowHandle = glfwCreateWindow(600, 400, "Window", NULL, NULL);
+    glfwSetMouseButtonCallback(WindowHandle, MouseButtonCallback);
     return WindowHandle;
 }
 

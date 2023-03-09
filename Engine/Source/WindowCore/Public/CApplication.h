@@ -20,7 +20,7 @@ namespace CLGL
 
         void LoadOpenGLFunctions() const;
 
-        int Exec();
+        int Exec() const;
         
     private:
         friend class CWindow;
@@ -34,7 +34,9 @@ namespace CLGL
         
     private:
         CApplicationPrivate* P = nullptr;
+
         int ArgumentCount;
+        
         CArray<CString> Arguments;
 
         CWindow* CurrentContextWindow;

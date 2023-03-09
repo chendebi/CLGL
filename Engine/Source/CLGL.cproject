@@ -23,5 +23,6 @@ project "CLGL"
 
     links
     {
-        LinkStaticFile("GLFW")
+        LinkStaticFile("GLFW"),
+        "opengl32.lib"
     }

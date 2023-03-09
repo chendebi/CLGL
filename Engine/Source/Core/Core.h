@@ -12,4 +12,14 @@ using uint16 = unsigned short;
 using uint32 = unsigned int;
 using ulong = unsigned long;
 
+namespace CLGL
+{
+    enum MouseButton
+    {
+        NoButton,
+        MouseButtonLeft,
+        MouseButtonRight,
+    };
+}
+
 #endif

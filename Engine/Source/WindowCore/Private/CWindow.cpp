@@ -10,7 +10,7 @@
 CLGL::CWindow::CWindow(CWindow* Parent, const CString& Title, const CIntSize& DefaultSize)
 {
 #ifdef CG_PLATFORM_GLFW
-    P = new CGLFWWindowPrivate();
+    P = new CGLFWWindowPrivate(this);
 #endif
     
     CWindowPrivate* PP = Parent ? Parent->P : nullptr;
