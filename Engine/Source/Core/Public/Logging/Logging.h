@@ -1,4 +1,4 @@
-﻿#ifndef LOGGING_H
+#ifndef LOGGING_H
 #define LOGGING_H
 
 #include "Core/Public/Types/CString.h"
@@ -13,6 +13,7 @@ struct CLogBaseCategory
     {}
 };
 
+#ifdef CG_SYSTEM_WINDOWS
 
 #define DECLARE_LOG_CATEGORY_EXTERN(CategoryName)\
     extern struct CLogCategory##CategoryName : public CLogBaseCategory\
@@ -40,6 +41,34 @@ struct CLogBaseCategory
         CLGL::CString OutMsg = "[" + LogCategory.Name + "] [Error] " + Msg + "\n";\
         fprintf(stderr, OutMsg.c_str(), __VA_ARGS__);\
     }
+#else
+#define DECLARE_LOG_CATEGORY_EXTERN(CategoryName)\
+    extern struct CLogCategory##CategoryName : public CLogBaseCategory\
+    {\
+        CLogCategory##CategoryName() : CLogBaseCategory(#CategoryName) {}\
+    } CategoryName;
+
+#define DEFINE_LOG_CATEGORY(CategoryName)\
+    CLogCategory##CategoryName CategoryName;
+
+#define LogInfo(LogCategory, Msg, ...)\
+    {\
+        CLGL::CString OutMsg = "[" + LogCategory.Name + "] [Info] " + Msg + "\n";\
+fprintf(stdout, OutMsg.c_str(), ##__VA_ARGS__);\
+    }
+
+#define LogWarning(LogCategory, Msg, ...)\
+    {\
+        CLGL::CString OutMsg = "[" + LogCategory.Name + "] [Warning] " + Msg + "\n";\
+fprintf(stdout, OutMsg.c_str(), ##__VA_ARGS__);\
+    }
+
+#define LogError(LogCategory, Msg, ...)\
+    {\
+        CLGL::CString OutMsg = "[" + LogCategory.Name + "] [Error] " + Msg + "\n";\
+fprintf(stderr, OutMsg.c_str(), ##__VA_ARGS__);\
+    }
+#endif
 
 DECLARE_LOG_CATEGORY_EXTERN(LogSystem)
 

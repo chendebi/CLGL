@@ -1,4 +1,4 @@
-﻿#ifndef CGLFWAPPLICATIONPRIVATE_H
+#ifndef CGLFWAPPLICATIONPRIVATE_H
 #define CGLFWAPPLICATIONPRIVATE_H
 
 #include "WindowCore/Private/CApplicationPrivate.h"
@@ -23,12 +23,12 @@ namespace CLGL
         
         CWindowPrivate* FindWindowByGLFWwindow(GLFWwindow* W);
 
-        CMap<CWindow*, CArray<CEvent>> GetEvents() override;
+        CMap<CWindow*, CArray<CEvent> > GetEvents() override;
 
         int GetQuitCode() override;
 
     private:
-        CMap<CWindow*, CArray<CEvent>> FrameEvents;
+        CMap<CWindow*, CArray<CEvent> > FrameEvents;
     };
 }
 

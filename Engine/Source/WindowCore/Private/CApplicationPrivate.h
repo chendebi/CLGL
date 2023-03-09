@@ -28,7 +28,7 @@ namespace CLGL
 
         virtual void ProcessMouseEvent(CMouseEventPrivate Event) = 0;
 
-        virtual CMap<CWindow*, CArray<CEvent>> GetEvents() = 0;
+        virtual CMap<CWindow*, CArray<CEvent> > GetEvents() = 0;
 
         // return >= 0 means quit application
         virtual int GetQuitCode() = 0;

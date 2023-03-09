@@ -1,4 +1,4 @@
-﻿#include "CGLFWApplicationPrivate.h"
+#include "CGLFWApplicationPrivate.h"
 #include "Core/Core.h"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
@@ -57,7 +57,7 @@ CLGL::CWindowPrivate* CLGL::CGLFWApplicationPrivate::FindWindowByGLFWwindow(GLFW
     return nullptr;
 }
 
-CLGL::CMap<CLGL::CWindow*, CLGL::CArray<CLGL::CEvent>> CLGL::CGLFWApplicationPrivate::GetEvents()
+CLGL::CMap<CLGL::CWindow*, CLGL::CArray<CLGL::CEvent> > CLGL::CGLFWApplicationPrivate::GetEvents()
 {
     return FrameEvents;
 }

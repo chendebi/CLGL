@@ -19,6 +19,12 @@ workspace "CLGL"
          "CG_NO_DEBUG"
       }
 
+   filter "system:windows"
+      defines
+      {
+         "CG_SYSTEM_WINDOWS"
+      }
+
     group "Engine"
        include "Engine/Source/CLGL.cproject"
     group ""
