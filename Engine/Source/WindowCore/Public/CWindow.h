@@ -1,6 +1,7 @@
 #ifndef CWINDOW_H
 #define CWINDOW_H
 
+#include "WindowCore/Private/CEvent.h"
 #include "WindowCore/Private/CWindowPrivate.h"
 
 namespace CLGL
@@ -28,6 +29,12 @@ namespace CLGL
         }
 
         void MakeCurrentContext();
+
+    protected:
+        friend class CApplication;
+        virtual void Event(CEvent* E);
+
+        virtual void MousePressEvent(CMouseEvent* E) {}
         
     private:
         CWindowPrivate* P = nullptr;

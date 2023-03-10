@@ -30,6 +30,8 @@ namespace CLGL
 
         virtual CMap<CWindow*, CArray<CEvent> > GetEvents() = 0;
 
+        virtual void ClearEvents() = 0;
+
         // return >= 0 means quit application
         virtual int GetQuitCode() = 0;
         

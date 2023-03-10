@@ -10,7 +10,7 @@ namespace CLGL
         : ArgumentCount(Argc),
           CurrentContextWindow(nullptr)
     {
-        //if (!AppInst)
+        if (!AppInst)
         {
             AppInst = this;
             P = new CGLFWApplicationPrivate();
@@ -41,13 +41,26 @@ namespace CLGL
         P->LoadOpenGLFunctions();
     }
 
-    int CApplication::Exec() const
+    int CApplication::Exec()
     {
 		while (P->GetQuitCode() < 0)
 		{
+            for (auto Event : P->GetEvents())
+            {
+                for (auto E : Event.second)
+                {
+                    Notify(Event.first, &E);
+                }
+            }
+		    P->ClearEvents();
 			P->PollEvents();
 		}
         return P->GetQuitCode();
+    }
+
+    void CApplication::Notify(CWindow* RecvWindow, CEvent* Event)
+    {
+        RecvWindow->Event(Event);
     }
 
     void CApplication::SetCurrentContextWindow(CWindow* Window)

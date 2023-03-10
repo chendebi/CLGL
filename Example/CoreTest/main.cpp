@@ -1,4 +1,6 @@
 ﻿
+#include <iostream>
+
 #include "Core/Core.h"
 #include "WindowCore/Public/CApplication.h"
 
@@ -16,26 +18,3 @@ int main(int argc, char** argv)
     App.LoadOpenGLFunctions();
     return App.Exec();
 }
-
-
-/*
-#include "glad/glad.h"
-#include "GLFW/glfw3.h"
-
-int main(int argc, char** argv)
-{
-	if (!glfwInit())
-		return 1;
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-	GLFWwindow* W = glfwCreateWindow(600, 400, "SS", NULL, NULL);
-
-	while (true)
-	{
-
-	}
-	return 0;
-}
-*/

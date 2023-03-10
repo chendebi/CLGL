@@ -13,7 +13,7 @@ namespace CLGL
 
         CSize(T SizeX, T SizeY) : X(SizeX), Y(SizeY) {}
 
-        bool IsValid() const
+        virtual bool IsValid() const
         {
             return X > 0 && Y > 0;
         }

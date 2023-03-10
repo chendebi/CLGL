@@ -5,6 +5,7 @@
 #include "Core/Public/Types/CArray.h"
 #include "Core/Public/Types/CString.h"
 #include "Core/Public/Types/CSize.h"
+#include "Core/Public/Types/CPos.h"
 
 using uint = unsigned int;
 using uint8 = unsigned char;

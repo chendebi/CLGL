@@ -1,7 +1,7 @@
 include "/Engine/Build/EngineBuildConfiguration.cpdata"
 
 project "CoreTest"
-    kind "WindowedApp"
+    kind "ConsoleApp"
     language "C++"
 
     targetdir (engine_target_dir)

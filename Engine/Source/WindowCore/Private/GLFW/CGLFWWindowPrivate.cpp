@@ -14,11 +14,13 @@ void MouseButtonCallback(GLFWwindow* Window, int Button, int Action, int Mode)
     case 2: Type = CLGL::CEvent::MouseButtonPress; break;
     default:
             Type = CLGL::CEvent::None;
-        break;;
+        break;
     }
+    double RelX, RelY;
+    glfwGetCursorPos(Window, &RelX, &RelY);
     const auto AppInstP = dynamic_cast<CLGL::CGLFWApplicationPrivate*>(CLGL::CApplicationPrivate::AppPrivateInst);
     AppInstP->ProcessMouseEvent(CLGL::CMouseEventPrivate(AppInstP->FindWindowByGLFWwindow(Window)->Window(),
-        static_cast<CLGL::MouseButton>(Button), Type));
+        static_cast<CLGL::MouseButton>(Button), Type, {static_cast<int>(RelX), static_cast<int>(RelY)}));
     LogInfo(LogSystem, "Mouse Event: %d, %d", Button, Action)
 }
 

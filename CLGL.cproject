@@ -35,4 +35,5 @@ workspace "CLGL"
 
     group "Example"
        include "Example/CoreTest/CoreTest.cproject"
+       include "Example/GLFWTest/GLFWTest.cproject"
     group ""

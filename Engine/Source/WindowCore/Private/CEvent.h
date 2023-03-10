@@ -1,5 +1,7 @@
 ﻿#ifndef CEVENT_H
 #define CEVENT_H
+#include "Core/Core.h"
+#include "Core/Public/Types/CPos.h"
 
 namespace CLGL
 {
@@ -21,12 +23,19 @@ namespace CLGL
     class CMouseEvent : public CEvent
     {
     public:
-        explicit CMouseEvent(EventType Intype):MouseEventType(Intype) {}
+        explicit CMouseEvent(CLGL::MouseButton InButton, const EventType InType, CPos InPos)
+            : MouseEventType(InType),Button(InButton), Pos(InPos) {}
 
         int Type() const override { return MouseEventType; }
 
+        int GetButton() const { return Button; }
+
+        CPos GetPos() const { return Pos; }
+
     private:
         EventType MouseEventType;
+        MouseButton Button;
+        CPos Pos;
     };
 }
 

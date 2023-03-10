@@ -25,6 +25,8 @@ namespace CLGL
 
         CMap<CWindow*, CArray<CEvent> > GetEvents() override;
 
+        void ClearEvents() override;
+
         int GetQuitCode() override;
 
     private:

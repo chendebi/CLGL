@@ -33,3 +33,8 @@ void CLGL::CWindow::MakeCurrentContext()
     CApplication::Get()->SetCurrentContextWindow(this);
 }
 
+void CLGL::CWindow::Event(CEvent* E)
+{
+    LogInfo(LogSystem, "接收到事件 %d", E->Type());
+}
+

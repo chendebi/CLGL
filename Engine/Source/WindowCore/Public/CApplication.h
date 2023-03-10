@@ -3,6 +3,7 @@
 
 #include "CWindow.h"
 #include "Core/Core.h"
+#include "WindowCore/Private/CEvent.h"
 
 namespace CLGL
 {
@@ -20,7 +21,10 @@ namespace CLGL
 
         void LoadOpenGLFunctions() const;
 
-        int Exec() const;
+        int Exec();
+
+    protected:
+        virtual void Notify(CWindow* RecvWindow, CEvent* Event);
         
     private:
         friend class CWindow;

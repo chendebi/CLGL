@@ -42,12 +42,13 @@ void CLGL::CGLFWApplicationPrivate::ProcessMouseEvent(CMouseEventPrivate Event)
 {
     if (Event.Type != CEvent::None && Event.Button != CLGL::NoButton)
     {
-        FrameEvents[Event.Window].push_back(CMouseEvent(Event.Type));
+        FrameEvents[Event.Window].push_back(CMouseEvent(Event.Button, Event.Type,Event.Pos));
     }
 }
 
 CLGL::CWindowPrivate* CLGL::CGLFWApplicationPrivate::FindWindowByGLFWwindow(GLFWwindow* W)
 {
+    LogInfo(LogSystem, "当前私有数量：%d", GetPrivateWindows().size())
     for (auto Window : GetPrivateWindows())
     {
         auto* WP = reinterpret_cast<CGLFWWindowPrivate*>(Window);
@@ -60,6 +61,11 @@ CLGL::CWindowPrivate* CLGL::CGLFWApplicationPrivate::FindWindowByGLFWwindow(GLFW
 CLGL::CMap<CLGL::CWindow*, CLGL::CArray<CLGL::CEvent> > CLGL::CGLFWApplicationPrivate::GetEvents()
 {
     return FrameEvents;
+}
+
+void CLGL::CGLFWApplicationPrivate::ClearEvents()
+{
+    FrameEvents.clear();
 }
 
 int CLGL::CGLFWApplicationPrivate::GetQuitCode()

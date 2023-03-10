@@ -1,7 +1,6 @@
 #ifndef CWINDOWPRIVATE_H
 #define CWINDOWPRIVATE_H
 
-
 #include "Core/Core.h"
 
 namespace CLGL
@@ -14,10 +13,7 @@ namespace CLGL
     class CWindowPrivate
     {
     public:
-        explicit CWindowPrivate(CWindow* W)
-        {
-            BelongWindow = W;
-        }
+        explicit CWindowPrivate(CWindow* W);
 
         CWindow* Window() const { return BelongWindow; }
         

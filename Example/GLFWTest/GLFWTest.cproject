@@ -1,0 +1,24 @@
+project "GLFWTest"
+    kind "ConsoleApp"
+    language "C++"
+
+    targetdir(engine_target_dir)
+    objdir(engine_int_dir)
+
+    files
+    {
+        "./**.h",
+        "./**.cpp",
+        engine_vendor_path .. "/glad/**.cpp"
+    }
+
+    includedirs
+    {
+        dependences_include_dirs["GLFW"],
+        dependences_include_dirs["Glad"]
+    }
+
+    links
+    {
+        LinkStaticFile("GLFW")
+    }
