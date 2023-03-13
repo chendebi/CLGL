@@ -25,6 +25,7 @@ CLGL::CWindow::~CWindow()
     P->DestroyWindow();
     delete P;
     P = nullptr;
+    CApplication::Get()->RemoveWindow(this);
 }
 
 void CLGL::CWindow::MakeCurrentContext()
@@ -35,6 +36,14 @@ void CLGL::CWindow::MakeCurrentContext()
 
 void CLGL::CWindow::Event(CEvent* E)
 {
-    LogInfo(LogSystem, "接收到事件 %d", E->Type());
+    switch (E->Type())
+    {
+    case CEvent::Close:
+        CloseEvent(dynamic_cast<CCloseEvent*>(E));
+        break;
+    default:
+        break;
+    }
 }
+
 

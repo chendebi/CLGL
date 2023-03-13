@@ -17,7 +17,7 @@ namespace CLGL
 
         CWindow* Window() const { return BelongWindow; }
         
-        virtual ~CWindowPrivate() = default;
+        virtual ~CWindowPrivate();
 
         virtual bool CreateWindow(CWindowPrivate* Parent = nullptr) = 0;
 

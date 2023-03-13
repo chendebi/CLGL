@@ -10,4 +10,8 @@ namespace CLGL
         CApplicationPrivate::AppPrivateInst->AddPrivateWindow(this);
     }
 
+    CWindowPrivate::~CWindowPrivate()
+    {
+        CApplicationPrivate::AppPrivateInst->RemovePrivateWindow(this);
+    }
 }

@@ -28,21 +28,33 @@ namespace CLGL
 
         virtual void ProcessMouseEvent(CMouseEventPrivate Event) = 0;
 
-        virtual CMap<CWindow*, CArray<CEvent> > GetEvents() = 0;
+        void AddEvent(CWindow* Window, CEvent *E);
 
-        virtual void ClearEvents() = 0;
+        virtual CMap<CWindow*, CArray<CEvent*> > GetEvents();
+
+        virtual void ClearEvents() ;
 
         // return >= 0 means quit application
-        virtual int GetQuitCode() = 0;
+        virtual int GetQuitCode() const { return QuitCode; }
+
+        virtual void SetQuitCode(int NewQuitCode);
+
+        virtual void Tick() {}
         
     protected:
         friend class CWindowPrivate;
         void AddPrivateWindow(CWindowPrivate* PrivateWindow);
 
-        CArray<CWindowPrivate*> GetPrivateWindows() const { return PrivateWindows; }
+        void RemovePrivateWindow(CWindowPrivate* PrivateWindow);
+
+        CList<CWindowPrivate*> GetPrivateWindows() const { return PrivateWindows; }
         
     private:
-        CArray<CWindowPrivate*> PrivateWindows;
+        CList<CWindowPrivate*> PrivateWindows;
+
+        CMap<CWindow*, CArray<CEvent*> > FrameEvents;
+
+        int QuitCode = -1;
     };
 }
 #endif

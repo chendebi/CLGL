@@ -21,7 +21,11 @@ void MouseButtonCallback(GLFWwindow* Window, int Button, int Action, int Mode)
     const auto AppInstP = dynamic_cast<CLGL::CGLFWApplicationPrivate*>(CLGL::CApplicationPrivate::AppPrivateInst);
     AppInstP->ProcessMouseEvent(CLGL::CMouseEventPrivate(AppInstP->FindWindowByGLFWwindow(Window)->Window(),
         static_cast<CLGL::MouseButton>(Button), Type, {static_cast<int>(RelX), static_cast<int>(RelY)}));
-    LogInfo(LogSystem, "Mouse Event: %d, %d", Button, Action)
+}
+
+void KeyCallBack(GLFWwindow* Window, int Key, int ScanCode, int Action, int Mods)
+{
+    
 }
 
 CLGL::CGLFWWindowPrivate::CGLFWWindowPrivate(CWindow* W)
@@ -33,6 +37,7 @@ bool CLGL::CGLFWWindowPrivate::CreateWindow(CWindowPrivate* Parent)
 {
     WindowHandle = glfwCreateWindow(600, 400, "Window", NULL, NULL);
     glfwSetMouseButtonCallback(WindowHandle, MouseButtonCallback);
+    glfwSetKeyCallback(WindowHandle, KeyCallBack);
     return WindowHandle;
 }
 

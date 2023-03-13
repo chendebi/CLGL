@@ -14,10 +14,20 @@ namespace CLGL
             None,
             MouseButtonPress = 2,
             MouseButtonRelease = 3,
-            MouseButtonDbClick = 4
+            MouseButtonDbClick = 4,
+            Close,
         };
 
         virtual int Type() const { return None; }
+
+        void Accept() { bAccepted = true; }
+
+        void Reject() { bAccepted = true; }
+
+        bool IsAccepted() const { return bAccepted; }
+
+    private:
+        bool bAccepted = true;
     };
 
     class CMouseEvent : public CEvent
@@ -36,6 +46,12 @@ namespace CLGL
         EventType MouseEventType;
         MouseButton Button;
         CPos Pos;
+    };
+
+    class CCloseEvent : public CEvent
+    {
+    public:
+        int Type() const override { return  Close; }
     };
 }
 

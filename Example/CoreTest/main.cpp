@@ -10,9 +10,9 @@ DECLARE_LOG_CATEGORY_EXTERN(LogCoreTest)
 
 DEFINE_LOG_CATEGORY(LogCoreTest)
 
-int main(int argc, char** argv)
+int main(int Argc, char** Argvs)
 {
-    CApplication App(argc, argv);
+    CApplication App(Argc, Argvs);
     CWindow* MainWindow = new CWindow(nullptr);
     MainWindow->MakeCurrentContext();
     App.LoadOpenGLFunctions();

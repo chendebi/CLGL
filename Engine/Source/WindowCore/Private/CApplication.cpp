@@ -45,11 +45,12 @@ namespace CLGL
     {
 		while (P->GetQuitCode() < 0)
 		{
+		    P->Tick();
             for (auto Event : P->GetEvents())
             {
-                for (auto E : Event.second)
+                for (const auto E : Event.second)
                 {
-                    Notify(Event.first, &E);
+                    Notify(Event.first, E);
                 }
             }
 		    P->ClearEvents();
@@ -61,6 +62,10 @@ namespace CLGL
     void CApplication::Notify(CWindow* RecvWindow, CEvent* Event)
     {
         RecvWindow->Event(Event);
+        if (Event->Type() == CEvent::Close && dynamic_cast<CCloseEvent*>(Event)->IsAccepted())
+        {
+            delete RecvWindow;
+        }
     }
 
     void CApplication::SetCurrentContextWindow(CWindow* Window)
@@ -74,5 +79,10 @@ namespace CLGL
     void CApplication::AddWindow(CWindow *NewWindow)
     {
         Windows.push_back(NewWindow);
+    }
+
+    void CApplication::RemoveWindow(CWindow* RemovedWindow)
+    {
+        Windows.remove(RemovedWindow);
     }
 }

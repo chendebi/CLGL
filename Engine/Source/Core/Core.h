@@ -6,6 +6,7 @@
 #include "Core/Public/Types/CString.h"
 #include "Core/Public/Types/CSize.h"
 #include "Core/Public/Types/CPos.h"
+#include "Core/Public/Types/CList.h"
 
 using uint = unsigned int;
 using uint8 = unsigned char;

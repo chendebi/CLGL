@@ -35,6 +35,8 @@ namespace CLGL
         virtual void Event(CEvent* E);
 
         virtual void MousePressEvent(CMouseEvent* E) {}
+
+        virtual void CloseEvent(CCloseEvent* E) {}
         
     private:
         CWindowPrivate* P = nullptr;

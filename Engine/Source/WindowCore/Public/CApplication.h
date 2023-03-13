@@ -13,9 +13,9 @@ namespace CLGL
     {
     public:
         
-        explicit CApplication(int Argc, char** Argv);
+        explicit CApplication(int Argc = 0, char** Argv = nullptr);
 
-        ~CApplication();
+        virtual ~CApplication();
         
         static CApplication* Get();
 
@@ -31,6 +31,8 @@ namespace CLGL
         
         void AddWindow(CWindow* NewWindow);
 
+        void RemoveWindow(CWindow* RemovedWindow);
+        
         void SetCurrentContextWindow(CWindow* Window);
         
     private:
@@ -45,7 +47,7 @@ namespace CLGL
 
         CWindow* CurrentContextWindow;
         
-        CArray<CWindow*> Windows;
+        CList<CWindow*> Windows;
     };
     
 }

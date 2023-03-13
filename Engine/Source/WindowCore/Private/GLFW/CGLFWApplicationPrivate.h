@@ -23,14 +23,8 @@ namespace CLGL
         
         CWindowPrivate* FindWindowByGLFWwindow(GLFWwindow* W);
 
-        CMap<CWindow*, CArray<CEvent> > GetEvents() override;
-
-        void ClearEvents() override;
-
-        int GetQuitCode() override;
-
     private:
-        CMap<CWindow*, CArray<CEvent> > FrameEvents;
+        
     };
 }
 
